@@ -10,7 +10,7 @@ const Signup = () => {
     password: "",
   });
   const onchange = (e) => {
-    console.log("onchange is clicked");
+  
     setcrediential({
       ...crediential,
       [e.target.name]: e.target.value,

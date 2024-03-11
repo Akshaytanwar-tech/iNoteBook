@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import config from "../confing";
 
 const Login = () => {
@@ -64,12 +64,6 @@ const Login = () => {
           />
         </div>
 
-        <div className="row mb-4">
-          <div className="col">
-            <a href="#!">Forgot password?</a>
-          </div>
-        </div>
-
         <button
           type="submit"
           className="btn btn-primary btn-block mb-4"
@@ -80,7 +74,7 @@ const Login = () => {
 
         <div className="text-center">
           <p>
-            Not a member? <a href="#!">Register</a>
+            Not a member? <Link to="/signup">Register</Link>
           </p>
         </div>
       </form>

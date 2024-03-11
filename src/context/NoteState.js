@@ -14,7 +14,7 @@ const NoteState = (props) => {
       },
     });
     const json = await response.json();
-    console.log(json);
+
     setNotes(json);
   };
 
@@ -28,7 +28,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tags }),
     });
     const creatednote = await response.json();
-    console.log(creatednote);
+
     setNotes(Notes.concat(creatednote));
   };
   const deletenote = async (id) => {
@@ -55,7 +55,6 @@ const NoteState = (props) => {
     });
     await response.json;
     let newNote = JSON.parse(JSON.stringify(Notes));
-    console.log(newNote);
 
     for (let index = 0; index < newNote.length; index++) {
       const element = newNote[index];
