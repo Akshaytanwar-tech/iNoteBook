@@ -19,7 +19,7 @@ const AddNote = (props) => {
 
   return (
     <>
-      <div className="mb-3">
+      {/* <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">
           Title
         </label>
@@ -65,7 +65,7 @@ const AddNote = (props) => {
         onClick={newNoteCreate}
       >
         Create New Note
-      </button>
+      </button> */}
     </>
   );
 };
