@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const authSchema = new Schema({
@@ -12,6 +12,14 @@ const authSchema = new Schema({
   },
   password: {
     type: String,
+    required: true,
+  },
+  mobile: {
+    type: Number,
+    required: true,
+  },
+  photo: {
+    type: Buffer,
     required: true,
   },
 });
