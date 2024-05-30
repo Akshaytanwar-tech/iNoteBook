@@ -7,4 +7,4 @@ const deleteLink = async (id) => {
     },
   });
 };
-module.exports = deleteLink;
+export default deleteLink;

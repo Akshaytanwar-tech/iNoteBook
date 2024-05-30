@@ -4,6 +4,9 @@ import NoteContext from "../../context/NoteContext";
 const NotesCard = ({ title, content, id }) => {
   const context = useContext(NoteContext);
   const { deleteNotes } = context;
+  const HandleEdit = () => {
+    
+  }
   return (
     <>
       <div class="note-card">
@@ -21,7 +24,7 @@ const NotesCard = ({ title, content, id }) => {
               }}
               style={{ cursor: "pointer" }}
             >
-              <i class="fa-solid fa-trash"></i>
+              <i class="fa-solid fa-trash" onClick={HandleEdit}></i>
             </span>
             <span class="btn-action" style={{ cursor: "pointer" }}>
               &#10132;

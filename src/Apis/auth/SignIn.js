@@ -11,4 +11,4 @@ const SignIn = async (email, password) => {
 
   return json;
 };
-module.exports = SignIn;
+export default SignIn;

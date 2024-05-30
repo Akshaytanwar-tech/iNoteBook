@@ -7,4 +7,4 @@ const deleteSprint = async (id) => {
     },
   });
 };
-module.exports = deleteSprint;
+export default deleteSprint;

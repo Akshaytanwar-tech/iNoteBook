@@ -12,4 +12,4 @@ const Signup = async (formdata) => {
     console.log(error);
   }
 };
-module.exports = Signup;
+export default Signup;

@@ -7,4 +7,4 @@ const deleteTodo = async (id) => {
     },
   });
 };
-module.exports = deleteTodo;
+export default deleteTodo;

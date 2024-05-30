@@ -32,6 +32,7 @@ const Notes = () => {
       <div class="container container-note mt-3">
         <div class="row">
           <div class="col">
+            
             <div class="note-form">
               <h2 class="mb-4 text-center">Add your notes here</h2>
               <form onSubmit={HandleonSubmit}>

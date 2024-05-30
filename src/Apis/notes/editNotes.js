@@ -12,4 +12,4 @@ const editNotes = async (title, content, tags, id) => {
   return res;
 };
 
-module.exports = editNotes;
+export default editNotes;

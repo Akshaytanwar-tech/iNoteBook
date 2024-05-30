@@ -12,4 +12,4 @@ const CreateNote = async (title, description, tags) => {
   return res;
 };
 
-module.exports = CreateNote;
+export default CreateNote;

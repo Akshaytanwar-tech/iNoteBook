@@ -11,4 +11,4 @@ const createSprint = async (task, Subtasks, timeFrame) => {
   const json = await res.json();
   return json;
 };
-module.exports = createSprint;
+export default createSprint;

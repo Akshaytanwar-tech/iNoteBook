@@ -11,4 +11,4 @@ const deleteNotes = async (id) => {
   return result;
 };
 
-module.exports = deleteNotes;
+export default deleteNotes;

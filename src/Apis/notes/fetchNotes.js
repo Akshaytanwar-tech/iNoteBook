@@ -11,4 +11,4 @@ const fetchNotes = async () => {
   const json = await response.json();
   return json;
 };
-module.exports = fetchNotes;
+export default fetchNotes;

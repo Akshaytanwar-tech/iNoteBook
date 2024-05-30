@@ -7,4 +7,4 @@ const updateTime = async (id) => {
     },
   });
 };
-module.exports = updateTime;
+export default updateTime;

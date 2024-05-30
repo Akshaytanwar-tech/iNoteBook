@@ -10,4 +10,4 @@ const fetchTodo = async () => {
   const json = await res.json();
   return json;
 };
-module.exports = fetchTodo;
+export default fetchTodo;

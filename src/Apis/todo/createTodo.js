@@ -11,4 +11,4 @@ const createTodo = async (title, isDone) => {
   const json = await res.json();
   return json;
 };
-module.exports = createTodo;
+export default createTodo;

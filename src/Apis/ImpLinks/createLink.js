@@ -11,4 +11,4 @@ const createLink = async (title, link) => {
   const json = await res.json();
   return json;
 };
-module.exports = createLink;
+export default createLink;

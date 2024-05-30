@@ -10,4 +10,4 @@ const fetchLink = async () => {
   const json = await res.json();
   return json;
 };
-module.exports = fetchLink;
+export default fetchLink;

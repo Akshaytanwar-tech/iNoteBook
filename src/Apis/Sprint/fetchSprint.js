@@ -10,4 +10,4 @@ const fetchSprint = async () => {
   const json = await res.json();
   return json;
 };
-module.exports = fetchSprint;
+export default fetchSprint;
