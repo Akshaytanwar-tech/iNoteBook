@@ -15,6 +15,7 @@ app.use("/api/notes", require("./routes/notes"));
 app.use("/api/schedule", require("./routes/schedules"));
 app.use("/api/sprint", require("./routes/sprint"));
 app.use("/api/todo", require("./routes/todo"));
+app.use("/api/link", require("./routes/links"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

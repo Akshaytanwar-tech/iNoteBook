@@ -5,7 +5,7 @@ const createNotes = async (req, res) => {
     title,
     description,
     tags,
-    user: userdata.id,
+    user: userdata,
   });
   const savednote = await note.save();
   res.json(savednote);

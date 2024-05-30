@@ -1,3 +1,4 @@
+const Sprint = require('../../models/sprint');
 const deleteSprint = async (req, res) => {
   //write code here
   try {

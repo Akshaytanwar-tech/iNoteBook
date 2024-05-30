@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const TodoSchema = new Schema({
+const LinkSchema = new Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -10,11 +10,11 @@ const TodoSchema = new Schema({
     type: String,
     required: true,
   },
-  IsDone: {
-    type: Boolean,
-    default: false,
+  link: {
+    type: String,
+    required: true,
   },
 });
 
-const Todo = mongoose.model("Todo", TodoSchema);
-module.exports = Todo;
+const Link = mongoose.model("Link", LinkSchema);
+module.exports = Link;

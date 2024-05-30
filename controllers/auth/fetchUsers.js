@@ -1,6 +1,6 @@
 const User = require("../../models/auth");
 const fetchUser = async (req, res) => {
-  const user = await User.findById(userdata.id).select("-password");
+  const user = await User.findById(userdata).select("-password");
   res.json(user);
 };
 

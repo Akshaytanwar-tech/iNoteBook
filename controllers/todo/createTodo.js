@@ -3,7 +3,9 @@ const Todo = require("../../models/todo");
 const createTodo = async (req, res) => {
   //write code here
   try {
-    const todo = new Todo(req.body);
+    const { title, IsDone } = req.body;
+    
+    const todo = new Todo({ title, IsDone, user: userdata });
     await todo.save();
     res.status(201).send(todo);
   } catch (err) {

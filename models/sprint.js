@@ -6,18 +6,18 @@ const sprintSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  title: {
+  task: {
     type: String,
     required: true,
   },
-  description: {
+  Subtasks: {
     type: String,
   },
   timeFrame: {
-    type: Date,
+    type: Number,
     required: true,
   },
 });
 
-const Sprint = mongoose.model("Schedule", sprintSchema);
+const Sprint = mongoose.model("Sprint", sprintSchema);
 module.exports = Sprint;
