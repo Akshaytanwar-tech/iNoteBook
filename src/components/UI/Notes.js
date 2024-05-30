@@ -1,29 +1,39 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import NotesCard from "./NotesCard";
 import NoteContext from "../../context/NoteContext";
 
 const Notes = () => {
   const [Note, setNote] = useState({ title: "", content: "", tags: "" });
+  const [notes, setnotes] = useState([]);
   const context = useContext(NoteContext);
-  const { CreateNote } = context;
+  const { CreateNote, fetchNotes } = context;
+
+  useEffect(() => {
+    fetchNotes().then((res) => {
+      setnotes(res);
+    });
+    // eslint-disable-next-line
+  }, [notes]);
   // Handle the changes the input field
   const HandleonChange = (e) => {
     setNote({ ...Note, [e.target.name]: e.target.value });
   };
 
   // Handle the submit of the form.
-  const HandleonSubmit = () => {
+  const HandleonSubmit = (e) => {
+    e.preventDefault();
     CreateNote(Note.title, Note.content, Note.tags);
-    window.location.reload();
+    setNote({ title: "", content: "", tags: "" });
+    // window.location.reload();
   };
 
   return (
     <>
-      <div class="container container-note mt-5">
+      <div class="container container-note mt-3">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col">
             <div class="note-form">
-              <h2 class="mb-4">New Note</h2>
+              <h2 class="mb-4 text-center">Add your notes here</h2>
               <form onSubmit={HandleonSubmit}>
                 <div class="mb-3">
                   <label for="title" class="form-label">
@@ -73,7 +83,17 @@ const Notes = () => {
               </form>
             </div>
           </div>
-          <NotesCard />
+        </div>
+      </div>
+      <div className="container px-5">
+        <div className="row g-2">
+          {notes.map((e, i) => {
+            return (
+              <div className="col-6" key={i}>
+                <NotesCard title={e.title} content={e.description} id={e._id} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

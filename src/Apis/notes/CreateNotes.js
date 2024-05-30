@@ -4,7 +4,7 @@ const CreateNote = async (title, description, tags) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
+      token: localStorage.getItem("token"),
     },
     body: JSON.stringify({ title, description, tags }),
   });

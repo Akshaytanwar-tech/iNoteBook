@@ -1,14 +1,13 @@
 const config = require("../../config");
-
-const fetchNotes = async () => {
-  const response = await fetch(`${config.Url}/api/notes/fetchallnotes`, {
+const fetchLink = async () => {
+  const res = await fetch(`${config.Url}/api/link/fetchalllink`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       token: localStorage.getItem("token"),
     },
   });
-  const json = await response.json();
+  const json = await res.json();
   return json;
 };
-module.exports = fetchNotes;
+module.exports = fetchLink;

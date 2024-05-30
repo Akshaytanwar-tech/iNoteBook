@@ -4,7 +4,7 @@ const editNotes = async (title, content, tags, id) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
+      "token": localStorage.getItem("token"),
     },
     body: JSON.stringify({ title, content, tags }),
   });

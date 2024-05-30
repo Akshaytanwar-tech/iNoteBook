@@ -22,14 +22,14 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/notes" element={<Notes />} />
-            <Route path="/implinks" element={<ImpLinks />} />
+            <Route path="/implink" element={<ImpLinks />} />
             <Route path="/sprint" element={<Sprint />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/todo" element={<Todo />} />
           </Routes>
         </BrowserRouter>
       </NoteCotext>
-      ,
+      
     </>
   );
 }

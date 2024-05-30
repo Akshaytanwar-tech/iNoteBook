@@ -4,7 +4,7 @@ const deleteNotes = async (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
+      token: localStorage.getItem("token"),
     },
   });
   const result = res.json();

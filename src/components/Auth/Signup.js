@@ -32,7 +32,6 @@ const Signup = () => {
     formData.append("password", crediential.password);
 
     Signup(formData).then((res) => {
-      console.log(res);
       localStorage.setItem("token", res.token);
       navigate("/");
     });

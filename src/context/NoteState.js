@@ -6,6 +6,16 @@ import CreateNote from "../Apis/notes/CreateNotes";
 import fetchNotes from "../Apis/notes/fetchNotes";
 import deleteNotes from "../Apis/notes/deleteNotes";
 import editNotes from "../Apis/notes/editNotes";
+import createTodo from "../Apis/todo/createTodo";
+import deleteTodo from "../Apis/todo/DeleteTodo";
+import fetchTodo from "../Apis/todo/fetchTodo";
+import createLink from "../Apis/ImpLinks/createLink";
+import deleteLink from "../Apis/ImpLinks/deleteLink";
+import fetchLink from "../Apis/ImpLinks/fetchLinks";
+import createSprint from "../Apis/Sprint/createSprint";
+import deleteSprint from "../Apis/Sprint/deleteSprint";
+import updateTime from "../Apis/Sprint/updateTime";
+import fetchSprint from "../Apis/Sprint/fetchSprint";
 const NoteState = (props) => {
   return (
     <div>
@@ -17,6 +27,16 @@ const NoteState = (props) => {
           fetchNotes,
           deleteNotes,
           editNotes,
+          createTodo,
+          deleteTodo,
+          fetchTodo,
+          createLink,
+          deleteLink,
+          fetchLink,
+          createSprint,
+          deleteSprint,
+          updateTime,
+          fetchSprint,
         }}
       >
         {props.children}

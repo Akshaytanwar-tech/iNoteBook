@@ -1,14 +1,13 @@
 const config = require("../../config");
-const SignIn = async (email, password) => {
-  const res = await fetch(`${config.Url}/api/auth/signin`, {
+const fetchTodo = async () => {
+  const res = await fetch(`${config.Url}/api/todo/fetchTodo`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      token: localStorage.getItem("token"),
     },
-    body: JSON.stringify({ email, password }),
   });
   const json = await res.json();
-
   return json;
 };
-module.exports = SignIn;
+module.exports = fetchTodo;

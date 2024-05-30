@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import NoteContext from "../../context/NoteContext";
 
-const NotesCard = () => {
+const NotesCard = ({ title, content, id }) => {
+  const context = useContext(NoteContext);
+  const { deleteNotes } = context;
   return (
     <>
-      <div class="col-md-6">
-        <div class="note-card">
-          <div class="note">
-            <h3 class="note-title">Note Title</h3>
-            <p class="note-content">Note Content</p>
-            <div class="note-actions">
-              <span class="btn-action">&#9998;</span>
-              <span class="btn-action">&#128465;</span>
-              <span class="btn-action">&#10132;</span>
-            </div>
+      <div class="note-card">
+        <div class="note">
+          <h3 class="note-title">{title}</h3>
+          <p class="note-content">{content}</p>
+          <div class="note-actions">
+            <span class="btn-action" style={{ cursor: "pointer" }}>
+              &#9998;
+            </span>
+            <span
+              class="btn-action"
+              onClick={(e) => {
+                deleteNotes(id);
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              <i class="fa-solid fa-trash"></i>
+            </span>
+            <span class="btn-action" style={{ cursor: "pointer" }}>
+              &#10132;
+            </span>
           </div>
         </div>
       </div>
