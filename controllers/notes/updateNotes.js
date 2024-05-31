@@ -1,6 +1,7 @@
 const Notes = require("../../models/notes");
 const updateNotes = async (req, res) => {
   const { title, description, tags } = req.body;
+  
   newnotes = {};
   if (title) {
     newnotes.title = title;
@@ -15,7 +16,7 @@ const updateNotes = async (req, res) => {
   if (!Note) {
     return res.status(404).send("Not allowed");
   }
-  if (Note.user.toString() !== userdata.id) {
+  if (Note.user.toString() !== userdata) {
     return res.status(404).send("Not allowed");
   }
   note = await Notes.findByIdAndUpdate(req.params.id, { $set: newnotes });

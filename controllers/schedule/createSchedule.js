@@ -2,7 +2,15 @@ const Schedule = require("../../models/schedule");
 const createSchedule = async (req, res) => {
   //write code here
   try {
-    const schedule = new Schedule(req.body);
+    const { date, subject, starttime, endtime, workDes, user } = req.body;
+    const schedule = new Schedule({
+      date,
+      subject,
+      starttime,
+      endtime,
+      workDes,
+      user: userdata,
+    });
     await schedule.save();
     res.status(201).send(schedule);
   } catch (err) {

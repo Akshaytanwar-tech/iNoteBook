@@ -6,15 +6,21 @@ const scheduleSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  title: {
+  date: {
     type: String,
     required: true,
   },
-  time: {
-    type: Date,
+  subject: {
+    type: String,
   },
-  IsDone: {
-    type: Boolean,
+  starttime: {
+    type: String,
+  },
+  endtime: {
+    type: String,
+  },
+  workDes: {
+    type: String,
   },
 });
 

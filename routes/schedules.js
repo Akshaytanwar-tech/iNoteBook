@@ -7,11 +7,11 @@ const fetchuser = require("../middleware/fetchuser");
 const router = express.Router();
 
 // create schedule.
-router.post("/createSchedule", createSchedule);
+router.post("/createSchedule", fetchuser, createSchedule);
 // fetch schedule
 router.post("/fetchSchedule", fetchuser, fetchSchedule);
 // delete
-router.delete("/deleteSchedule", deleteSchedule);
+router.delete("/deleteSchedule/:id", deleteSchedule);
 // edit
 router.put("/updateSchedule", updateSchedule);
 
