@@ -43,11 +43,6 @@ const Home = () => {
               >
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <Link class="nav-link" to="/notifications">
-                      Notifications
-                    </Link>
-                  </li>
-                  <li class="nav-item">
                     <Link class="nav-link" to="/about">
                       About Us
                     </Link>
@@ -149,7 +144,7 @@ const Home = () => {
 
       <footer class="footer-homepage">
         <div class="container">
-          <p>&copy; 2024 Student Companion. All rights reserved.</p>
+          <p>&copy; 2024 akshay tanwar. All rights reserved.</p>
         </div>
       </footer>
     </>
