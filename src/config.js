@@ -1,4 +1,4 @@
 const config = {
-  Url: "http://localhost:5000",
+  Url: "https://inotebook-auq5.onrender.com",
 };
 module.exports = config;
