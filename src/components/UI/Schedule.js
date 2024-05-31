@@ -1,123 +1,162 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import NoteContext from "../../context/NoteContext";
 
 function Schedule() {
-  // State for managing tasks
-  const [tasks, setTasks] = useState([]);
-  // State for storing task input values
-  const [taskInput, setTaskInput] = useState({
-    taskName: "",
+  const context = useContext(NoteContext);
+  const { CreateSchedule, fetchSchedule, deleteSchedule } = context;
+  const [schedules, setSchedules] = useState([]);
+  useEffect(() => {
+    fetchSchedule().then((res) => {
+      setSchedules(res);
+    });
+  }, [schedules]);
+  const [formData, setFormData] = useState({
+    date: "",
+    subject: "",
     startTime: "",
     endTime: "",
-    additionalInfo: ""
+    notes: "",
   });
-  // State for tracking the index of the task being edited
-  const [editIndex, setEditIndex] = useState(null);
 
-  // Function to handle input changes
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setTaskInput({ ...taskInput, [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Function to handle form submission (Add or Edit)
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Concatenate start time and end time with a hyphen
-    const timeFrame = `${taskInput.startTime} - ${taskInput.endTime}`;
-    if (editIndex !== null) {
-      // Edit task
-      const updatedTasks = [...tasks];
-      updatedTasks[editIndex] = { ...taskInput, timeFrame };
-      setTasks(updatedTasks);
-      setEditIndex(null);
-    } else {
-      // Add new task
-      setTasks([...tasks, { ...taskInput, timeFrame }]);
-    }
-    // Clear input fields
-    setTaskInput({
-      taskName: "",
+    CreateSchedule(
+      formData.date,
+      formData.subject,
+      formData.startTime,
+      formData.endTime,
+      formData.notes
+    );
+
+    setFormData({
+      date: "",
+      subject: "",
       startTime: "",
       endTime: "",
-      additionalInfo: ""
+      notes: "",
     });
+    alert("Timetable saved successfully!");
   };
 
-  // Function to handle edit button click
-  const handleEdit = (index) => {
-    // Set task input values to the selected task
-    const selectedTask = tasks[index];
-    setTaskInput({
-      taskName: selectedTask.taskName,
-      startTime: selectedTask.startTime,
-      endTime: selectedTask.endTime,
-      additionalInfo: selectedTask.additionalInfo
-    });
-    setEditIndex(index);
+  const HandleDeleteSchedule = (id) => {
+    deleteSchedule(id);
   };
-
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card">
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4">Daily Schedule</h2>
-              <table className="table table-bordered">
-                <thead className="table-dark">
-                  <tr>
-                    <th scope="col">Serial Number</th>
-                    <th scope="col">Task</th>
-                    <th scope="col">Time Frame</th>
-                    <th scope="col">Additional Information</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {tasks.map((task, index) => (
-                    <React.Fragment key={index}>
-                      <tr>
-                        <th scope="row">{index + 1}</th>
-                        <td>{task.taskName}</td>
-                        <td>{task.timeFrame}</td>
-                        <td>{task.additionalInfo}</td>
-                        <td>
-                          <button className="btn btn-sm btn-primary me-2" onClick={() => handleEdit(index)}>Edit</button>
-                          {/* Add a delete button here if needed */}
-                        </td>
-                      </tr>
-                      {editIndex === index && (
-                        <tr>
-                          <td colSpan="5">
-                            <form onSubmit={handleSubmit}>
-                              <div className="mb-3">
-                                <label htmlFor="taskName" className="form-label">Task</label>
-                                <input type="text" className="form-control" id="taskName" name="taskName" value={taskInput.taskName} onChange={handleInputChange} required />
-                              </div>
-                              <div className="mb-3">
-                                <label htmlFor="startTime" className="form-label">Start Time</label>
-                                <input type="time" className="form-control" id="startTime" name="startTime" value={taskInput.startTime} onChange={handleInputChange} required />
-                              </div>
-                              <div className="mb-3">
-                                <label htmlFor="endTime" className="form-label">End Time</label>
-                                <input type="time" className="form-control" id="endTime" name="endTime" value={taskInput.endTime} onChange={handleInputChange} required />
-                              </div>
-                              <div className="mb-3">
-                                <label htmlFor="additionalInfo" className="form-label">Additional Information</label>
-                                <input type="text" className="form-control" id="additionalInfo" name="additionalInfo" value={taskInput.additionalInfo} onChange={handleInputChange} />
-                              </div>
-                              <button type="submit" className="btn btn-primary">{editIndex !== null ? "Update Task" : "Add Task"}</button>
-                            </form>
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </tbody>
-              </table>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Daily Study Timetable</h2>
+      <div className="form-container p-4 bg-light rounded shadow">
+        <form onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="date">Date</label>
+              <input
+                type="date"
+                className="form-control"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label htmlFor="subject">Subject</label>
+              <input
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                placeholder="Enter subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
             </div>
           </div>
-        </div>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="startTime">Start Time</label>
+              <input
+                type="time"
+                className="form-control"
+                id="startTime"
+                name="startTime"
+                value={formData.startTime}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label htmlFor="endTime">End Time</label>
+              <input
+                type="time"
+                className="form-control"
+                id="endTime"
+                name="endTime"
+                value={formData.endTime}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="notes">Notes</label>
+            <textarea
+              className="form-control"
+              id="notes"
+              name="notes"
+              rows="3"
+              placeholder="Enter notes"
+              value={formData.notes}
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary btn-block">
+            Save Timetable
+          </button>
+        </form>
+      </div>
+
+      <div className="mt-5">
+        <h3 className="text-center mb-4">Saved Timetable</h3>
+        <table className="table table-bordered table-striped">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {schedules.map((entry, index) => (
+              <tr key={index}>
+                <td>{entry.date}</td>
+                <td>{entry.subject}</td>
+                <td>{entry.starttime}</td>
+                <td>{entry.endtime}</td>
+                <td className="d-flex justify-content-between">
+                  <span>{entry.workDes}</span>
+                  <span>
+                    <i
+                      class="fa-solid fa-trash"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        HandleDeleteSchedule(entry._id);
+                      }}
+                    ></i>
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

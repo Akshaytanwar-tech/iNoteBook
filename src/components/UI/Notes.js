@@ -32,7 +32,6 @@ const Notes = () => {
       <div class="container container-note mt-3">
         <div class="row">
           <div class="col">
-            
             <div class="note-form">
               <h2 class="mb-4 text-center">Add your notes here</h2>
               <form onSubmit={HandleonSubmit}>
@@ -91,7 +90,12 @@ const Notes = () => {
           {notes.map((e, i) => {
             return (
               <div className="col-6" key={i}>
-                <NotesCard title={e.title} content={e.description} id={e._id} />
+                <NotesCard
+                  title={e.title}
+                  content={e.description}
+                  tags={e.tags}
+                  id={e._id}
+                />
               </div>
             );
           })}

@@ -18,7 +18,7 @@ const TodoCard = ({ tasks }) => {
           >
             <span>{task.title}</span>
             <span>
-              <span className="mx-3">
+              <span className="mx-5">
                 Completed
                 <input
                   class="form-check-input mx-2"

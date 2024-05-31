@@ -16,6 +16,10 @@ import createSprint from "../Apis/Sprint/createSprint";
 import deleteSprint from "../Apis/Sprint/deleteSprint";
 import updateTime from "../Apis/Sprint/updateTime";
 import fetchSprint from "../Apis/Sprint/fetchSprint";
+import UpdateNotes from "../Apis/notes/UpdateNotes";
+import CreateSchedule from "../Apis/schedule/CreateSchedule";
+import deleteSchedule from "../Apis/schedule/deleteSchedule";
+import fetchSchedule from "../Apis/schedule/fetchSchedule";
 const NoteState = (props) => {
   return (
     <div>
@@ -37,6 +41,10 @@ const NoteState = (props) => {
           deleteSprint,
           updateTime,
           fetchSprint,
+          UpdateNotes,
+          CreateSchedule,
+          deleteSchedule,
+          fetchSchedule,
         }}
       >
         {props.children}
